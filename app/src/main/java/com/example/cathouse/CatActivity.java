@@ -53,6 +53,8 @@ public class CatActivity extends AppCompatActivity {
 
         //tvName = findViewById(R.id.Username);
 
+
+        
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
