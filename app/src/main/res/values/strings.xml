@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CatHouse</string>
+    <string name="title_activity_cat">CatActivity</string>
+    <string name="title_home">Home</string>
+
+    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="enter_credentials">Enter your credentials.</string>
+    <string name="account_created">your account has been created.</string>
+</resources>

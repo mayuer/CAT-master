@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/CatHouse"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="CatHouse" />
+
+    <item
+        android:id="@+id/Map"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="Map" />
+
+    <item
+        android:id="@+id/communication"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="communication" />
+
+    <item
+        android:id="@+id/picture"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="picture" />
+
+
+</menu>

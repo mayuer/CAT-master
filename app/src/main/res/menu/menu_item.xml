@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.zhangyi.baidumap_test.MainActivity">
+
+    <item
+        android:id="@+id/menu_item_mylocation"
+        android:title="My location"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_item_llsearch"
+        android:title="Latitude and longitude search"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_item_sitesearch"
+        android:title="Address search"
+        app:showAsAction="never" />
+
+</menu>
