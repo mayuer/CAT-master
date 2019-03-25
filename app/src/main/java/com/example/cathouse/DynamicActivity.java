@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -56,7 +57,7 @@ import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.nio.ShortBuffer;
-
+import android.support.v7.app.AlertDialog;
 
 public class DynamicActivity extends AppCompatActivity {
 
@@ -122,10 +123,33 @@ public class DynamicActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
         }else {
             openAlbum();
+            Intent intentpicture = new Intent();
+            intentpicture.setClass(DynamicActivity.this, DynamicActivity.class);
+            startActivityForResult(intentpicture,1);
         }
+
+
     }
 
     public void published(View view){
+        new AlertDialog.Builder(DynamicActivity.this)
+                .setIcon(android.R.drawable.ic_dialog_map)
+                .setTitle("SUCCESS")
+                .setMessage("Successflly upload the photo.")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        Intent intentpicture = new Intent();
+                        intentpicture.setClass(DynamicActivity.this, Map.class);
+                        startActivity(intentpicture);
+                    }
+                })
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        Intent intentpicture = new Intent();
+                        intentpicture.setClass(DynamicActivity.this, DynamicActivity.class);
+                        startActivity(intentpicture);
+                    }
+                }).create().show();
 
     }
     /**
