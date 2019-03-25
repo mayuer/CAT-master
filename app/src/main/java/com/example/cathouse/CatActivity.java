@@ -118,10 +118,10 @@ public class CatActivity extends AppCompatActivity {
                 //Uri photoUri = Uri.fromFile(new File(mFilePath)); // 传递路径  
                 //intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);// 更改系统默认存储路径  
                 startActivityForResult(intent, REQUEST_CAMERA);
-        Intent takeIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        //下面这句指定调用相机拍照后的照片存储的路径
-        takeIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(mFilePath)));
-        startActivityForResult(takeIntent, REQUEST_CAMERA);
+//        Intent takeIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        //下面这句指定调用相机拍照后的照片存储的路径
+//        takeIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(mFilePath)));
+//        startActivityForResult(takeIntent, REQUEST_CAMERA);
 
     }
 

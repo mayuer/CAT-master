@@ -226,8 +226,7 @@ public class Map extends AppCompatActivity {
     /*
      *定位请求回调接口
      */
-    public class MylocationListener implements BDLocationListener
-    {
+    public class MylocationListener extends BDAbstractLocationListener {
         //定位请求回调接口
         private boolean isFirstIn=true;
         //定位请求回调函数,这里面会得到定位信息
@@ -261,7 +260,7 @@ public class Map extends AppCompatActivity {
                 getLocationByLL(myLatitude, myLongitude);
                 isFirstIn = false;
                 //提示当前所在地址信息
-//                Toast.makeText(context, bdLocation.getAddrStr(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, bdLocation.getAddrStr(), Toast.LENGTH_SHORT).show();
             }
 
         }

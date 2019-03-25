@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DynamicActivity">
+
+    <EditText
+        android:id="@+id/etDynamicContent"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/text_input"
+        android:ems="150"
+        android:gravity="top" />
+
+    <ImageView
+        android:id="@+id/select_photo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:onClick="select_photo"
+        android:layout_below="@+id/etDynamicContent"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_long_grey"
+        android:padding="20dp"
+        android:src="@drawable/add_white" />
+
+    <Button
+        android:id="@+id/btDynamicPublic"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/select_photo"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/btn_long_red"
+        android:text="published"
+        android:onClick="published"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+</RelativeLayout>
