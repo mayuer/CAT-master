@@ -4,14 +4,14 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.cathouse"
-        minSdkVersion 26
+        minSdkVersion 24
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
 
-        ndk{abiFilters "armeabi","armeabi-v7a","x86","mips"}
+        ndk { abiFilters "armeabi", "armeabi-v7a", "x86", "mips"}
     }
 
     splits {
@@ -31,10 +31,7 @@ android {
     }
 
 
-
-
-
-    }
+}
 
 
 
@@ -53,4 +50,11 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation files('libs/IndoorscapeAlbumPlugin.jar')
     implementation files('libs/BaiduLBS_Android.jar')
+    implementation files('libs/servlet.jar')
+    implementation files('libs/commons-fileupload-1.3.3/commons-fileupload-1.3.3-javadoc.jar')
+    implementation files('libs/commons-fileupload-1.3.3/commons-fileupload-1.3.3-sources.jar')
+    implementation files('libs/commons-fileupload-1.3.3/commons-fileupload-1.3.3-test-sources.jar')
+    implementation files('libs/commons-fileupload-1.3.3/commons-fileupload-1.3.3-tests.jar')
+    implementation files('libs/commons-fileupload-1.3.3/commons-fileupload-1.3.3.jar')
+    implementation files('libs/tomcat-coyote.jar')
 }

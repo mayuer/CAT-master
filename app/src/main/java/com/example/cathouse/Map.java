@@ -1,11 +1,16 @@
 package com.example.cathouse;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Application;
 import android.app.Service;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.media.audiofx.Virtualizer;
 import android.os.Vibrator;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,7 +21,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.location.BDLocation;
@@ -41,7 +48,7 @@ public class Map extends AppCompatActivity {
     private MapView myMapView = null;//地图控件
     private BaiduMap myBaiduMap;//百度地图对象
     private LocationClient mylocationClient;//定位服务客户对象
-    private Map.MylocationListener mylistener;//重写的监听类
+    private MylocationListener mylistener;//重写的监听类
     private Context context;
 
     private double myLatitude;//纬度，用于存储自己所在位置的纬度
@@ -62,11 +69,11 @@ public class Map extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // requestWindowFeature(Window.FEATURE_NO_TITLE);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_map);
         this.context = this;
-         initView();
+        initView();
         initLocation();
     }
     private void initView() {
@@ -83,8 +90,7 @@ public class Map extends AppCompatActivity {
 
         //定位服务的客户端。宿主程序在客户端声明此类，并调用，目前只支持在主线程中启动
         mylocationClient = new LocationClient(this);
-        mylistener = new Map.MylocationListener();
-
+        mylistener = new MylocationListener();
         //注册监听器
         mylocationClient.registerLocationListener(mylistener);
         //配置定位SDK各配置参数，比如定位模式、定位时间间隔、坐标系类型等
@@ -109,7 +115,7 @@ public class Map extends AppCompatActivity {
         MyLocationConfiguration configuration
                 = new MyLocationConfiguration(locationMode, true, myIconLocation1);
         //设置定位图层配置信息，只有先允许定位图层后设置定位图层配置信息才会生效，参见 setMyLocationEnabled(boolean)
-        myBaiduMap.setMyLocationConfigeration(configuration);
+        myBaiduMap.setMyLocationConfiguration(configuration);
 
         myOrientationListener = new MyOrientationListener(context);
         //通过接口回调来实现实时方向的改变
@@ -125,12 +131,12 @@ public class Map extends AppCompatActivity {
     /*
      *创建菜单操作
      */
-     @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_item, menu);
-       return true;
-    }
 
+        getMenuInflater().inflate(R.menu.menu_item, menu);
+        return true;
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId())
@@ -257,6 +263,7 @@ public class Map extends AppCompatActivity {
                 //提示当前所在地址信息
 //                Toast.makeText(context, bdLocation.getAddrStr(), Toast.LENGTH_SHORT).show();
             }
+
         }
     }
 
@@ -297,5 +304,4 @@ public class Map extends AppCompatActivity {
         super.onDestroy();
         myMapView.onDestroy();
     }
-
 }

@@ -75,6 +75,6 @@ public class AddressToLatitudeLongitude {
     public static void main(String[] args) {
         AddressToLatitudeLongitude at = new AddressToLatitudeLongitude("安徽省亳州市亳州一中");
         at.getLatAndLngByAddress();
-        System.out.println(at.getLatitude() + " " + at.getLongitude());
+        System.out.println(at.getLongitude() + " " + at.getLatitude());
     }
 }

@@ -5,10 +5,14 @@ import android.app.Service;
 import android.content.Context;
 import android.os.Vibrator;
 
+import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.SDKInitializer;
+import com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
+import com.baidu.mapapi.map.MyLocationConfiguration;
+import com.baidu.mapapi.map.MyLocationData;
 
 public class LocationService {
     private LocationClient client = null;
@@ -33,7 +37,7 @@ public class LocationService {
      * @return
      */
 
-    public boolean registerListener(BDLocationListener listener){
+    public boolean registerListener(BDAbstractLocationListener listener){
         boolean isSuccess = false;
         if(listener != null){
             client.registerLocationListener(listener);
@@ -80,7 +84,7 @@ public class LocationService {
             mOption.setIsNeedAddress(true);//可选，设置是否需要地址信息，默认不需要
             mOption.setIsNeedLocationDescribe(true);//可选，设置是否需要地址描述
             mOption.setNeedDeviceDirect(false);//可选，设置是否需要设备方向结果
-            mOption.setLocationNotify(false);//可选，默认false，设置是否当gps有效时按照1S1次频率输出GPS结果
+            mOption.setLocationNotify(true);//可选，默认false，设置是否当gps有效时按照1S1次频率输出GPS结果
             mOption.setIgnoreKillProcess(true);//可选，默认true，定位SDK内部是一个SERVICE，并放到了独立进程，设置是否在stop的时候杀死这个进程，默认不杀死
             mOption.setIsNeedLocationDescribe(true);//可选，默认false，设置是否需要位置语义化结果，可以在BDLocation.getLocationDescribe里得到，结果类似于“在北京天安门附近”
             mOption.setIsNeedLocationPoiList(true);//可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到
