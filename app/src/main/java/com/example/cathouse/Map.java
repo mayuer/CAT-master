@@ -100,7 +100,7 @@ public class Map extends AppCompatActivity {
         //设置是否需要地址信息，默认为无地址
         mOption.setIsNeedAddress(true);
         //设置是否打开gps进行定位
-        mOption.setOpenGps(true);
+        mOption.setOpenGps(false);
         //设置扫描间隔，单位是毫秒 当<1000(1s)时，定时定位无效
         int span = 1000;
         mOption.setScanSpan(span);

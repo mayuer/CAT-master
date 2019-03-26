@@ -14,8 +14,8 @@ import java.net.URLConnection;
  */
 public class AddressToLatitudeLongitude {
     private String address = "重庆";//地址
-    private double Latitude = 106.45 ;//纬度
-    private double Longitude = 29.53;//经度
+    private double Latitude =  129.53 ;//纬度
+    private double Longitude = 106;//经度
 
     public AddressToLatitudeLongitude(String addr_str) {
         this.address = addr_str;

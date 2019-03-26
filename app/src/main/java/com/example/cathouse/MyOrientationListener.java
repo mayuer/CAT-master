@@ -61,11 +61,6 @@ public class MyOrientationListener implements SensorEventListener{
 
 
 
-
-
-
-
-
     public void stop()
     {
         mSensorManager.unregisterListener(this);
@@ -74,21 +69,15 @@ public class MyOrientationListener implements SensorEventListener{
     //方向改变
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if(event.sensor.getType()==Sensor.TYPE_ORIENTATION)
-        {
-            float x=event.values[SensorManager.DATA_X];
-            if(Math.abs(x-lastX)>1.0)
-            {
-                if(mOnOrientationListener!=null)
-                {
-                    mOnOrientationListener.onOrientationChanged(x);
-                }
-            }
-            lastX=x;
-
-        }
+        if(event.sensor.getType()==Sensor.TYPE_ACCELEROMETER){
+            accelerometerValues = event.values;}
+        if(event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+        magneticFieldValues = event.values;
+    }
+    calculateOrientation();
 
     }
+
     public void setOnOrientationListener(OnOrientationListener listener)
     {
         mOnOrientationListener=listener;
