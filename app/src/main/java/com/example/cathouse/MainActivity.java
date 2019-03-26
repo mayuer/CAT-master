@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        /**
+        /**xxd
          * If the user just registered an account from Register.class,
          * the parcelable should be retrieved
          */

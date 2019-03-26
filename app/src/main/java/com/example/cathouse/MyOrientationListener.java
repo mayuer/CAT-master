@@ -5,6 +5,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.util.Log;
 
 public class MyOrientationListener implements SensorEventListener{
 
@@ -13,6 +14,10 @@ public class MyOrientationListener implements SensorEventListener{
     private Context mContext;
     private float lastX;
     private OnOrientationListener mOnOrientationListener;
+    private Sensor accelerometer; // 加速度传感器
+    private Sensor magnetic; // 地磁场传感器
+    float[] accelerometerValues = new float[3];
+    float[] magneticFieldValues = new float[3];
 
     public MyOrientationListener(Context context)
     {
@@ -25,7 +30,12 @@ public class MyOrientationListener implements SensorEventListener{
         if(mSensorManager!= null)
         {
             //获得方向传感器
-            mSensor=mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
+            accelerometer = mSensorManager
+                    .getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+            // 初始化地磁场传感器
+            magnetic = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+            calculateOrientation();
+
         }
         //判断是否有方向传感器
         if(mSensor!=null)
@@ -37,6 +47,25 @@ public class MyOrientationListener implements SensorEventListener{
 
 
     }
+
+    private void calculateOrientation() {
+        float[] values = new float[3];
+        float[] R = new float[9];
+        SensorManager.getRotationMatrix(R, null, accelerometerValues,
+                magneticFieldValues);
+        SensorManager.getOrientation(R, values);
+        values[0] = (float) Math.toDegrees(values[0]);
+
+
+    }
+
+
+
+
+
+
+
+
     public void stop()
     {
         mSensorManager.unregisterListener(this);
